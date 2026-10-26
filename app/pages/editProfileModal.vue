@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useWalletStore } from '~/stores/wallet'
-import '../css/editProfileModal.css'
+import '../css/accountEditModal.css'
 
 const props = defineProps<{ isOpen: boolean }>()
 const emit = defineEmits(['close'])
@@ -78,7 +78,7 @@ watch(() => props.isOpen, (newVal) => {
   <ClientOnly>
   <Teleport to="body">
   <div v-if="isOpen" class="modal-overlay" @click.self="closeModal">
-    <div class="modal-content profile-modal">
+    <div class="modal-content profile-modal account-edit-modal">
       <div class="modal-header">
         <h2>✏️ 修改使用者資料</h2>
         <span class="close-btn" @click="closeModal">&times;</span>

@@ -1,6 +1,6 @@
 
 <script setup>
-import "./css/SyncErrorPage.css";
+import "../css/syncErrorPage.css";
 // 模擬點擊重啟按鈕的操作
 const handleReboot = () => {
   alert('正在嘗試重新連接節點系統...')

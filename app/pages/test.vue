@@ -11,7 +11,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import MyCard from '~/components/myCard.vue' // 需先建立 components/MyCard.vue
+import MyCard from '~/components/MyCard.vue' // 需先建立 components/MyCard.vue
 
 const count = ref(0)
 </script>

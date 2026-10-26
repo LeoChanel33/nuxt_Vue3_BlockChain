@@ -25,10 +25,10 @@
 1. ⏳ **交易傳送等待 UI (`waitPage.vue`)**
    - **動態光條**：實作 10 段式進度光條，支援處理中 (藍色閃爍) 與已完成 (綠色) 狀態自動切換。
    - **狀態驅動**：全面使用 Vue `ref` 與 `computed` 替換原生 DOM 操作，實現資料驅動渲染。
-2. 🌐 **區塊鏈初始化載入 UI (`InitLoadingPage.vue`)**
+2. 🌐 **區塊鏈初始化載入 UI (`initLoadingPage.vue`)**
    - **多軌道動畫**：使用純 CSS 實作主節點與內、中、外圈衛星節點的同步旋轉動畫。
    - **樣式隔離**：全面加上 `initLoading-` 前綴與 `<style scoped>` 避免與系統其他組件發生樣式衝突。
-3. ❌ **區塊鏈同步失敗 UI (`SyncErrorPage.vue`)**
+3. ❌ **區塊鏈同步失敗 UI (`syncErrorPage.vue`)**
    - **科技感故障視覺**：實作斷開的能量核心動畫 (`slow-glitch-spin`) 與自定義錯誤代碼顯示卡片。
    - **操作整合**：內建重啟連線的模擬按鈕 (`@click`) 與底部的系統版本/開發者資訊區塊。
 
@@ -49,13 +49,13 @@
 本次更新全面導入了「模組化元件」的開發模式，將各項獨立功能封裝成高替換性的 Modal，並大幅擴充了 Pinia 的狀態管理結構。
 
 1. 🧩 **模組化彈窗 (Modal) 架構設計**
-   - **高替換性元件**：將「編輯帳號 (`accountEditModal`)」、「特約群組設定 (`specialStoreModal`)」、「約定帳戶設定 (`agreedAccountModal`)」及「VIP 群組管理 (`manageVipGroupModal`)」全面抽離為獨立 Vue 元件，隨插即用。
+   - **高替換性元件**：將「編輯帳號 (`AccountEditModal`)」、「特約群組設定 (`SpecialStoreModal`)」、「約定帳戶設定 (`agreedAccountModal`)」及「VIP 群組管理 (`manageVipGroupModal`)」全面抽離為獨立 Vue 元件，隨插即用。
    - **SSR 渲染優化**：統一導入 `<ClientOnly>` 與 `<Teleport to="body">` 結構，完美解決 Nuxt 3 伺服器端渲染 (SSR) 造成的 Hydration Mismatch 警告與版面層級干擾。
 2. 📦 **Pinia Store 狀態與型別擴充**
    - **全域資料綁定**：在 `walletStore` 中新增 `userInfo`、`companies`、`vipGroups` 與 `agreedAccounts` 等核心業務狀態，並預載假資料以供前端開發測試。
    - **TypeScript 型別定義**：嚴格定義 `Company`、`VipGroup`、`VipAccount` 等 Interface 介面，消滅物件屬性遺漏造成的 TS 報錯，提升開發體驗。
 3. 🔗 **約定帳戶與特約群組聯動系統**
-   - **多層級下拉選單**：優化 `specialStoreModal` 的操作邏輯，使用者可直接從系統預設的「合作公司」與使用者自行定義的「約定帳戶」中，透過下拉選單綁定至自訂的 Group 中。
+   - **多層級下拉選單**：優化 `SpecialStoreModal` 的操作邏輯，使用者可直接從系統預設的「合作公司」與使用者自行定義的「約定帳戶」中，透過下拉選單綁定至自訂的 Group 中。
    - **資料流同步**：前端輸入的表單資料統一由單向資料流寫回 Store，並實時連動至 `blockMain.vue` 主控台的接收帳號選單中，完成完整的業務邏輯閉環。
 
 ## 📅 2026.05.28 更新日誌：前端服務層封裝與特約帳號防呆驗證升級
@@ -84,3 +84,11 @@
    - 彈窗的 CSS 類別全面加上 `acc-res-` 前綴 (Prefix)，確保樣式獨立，避免與其他全域樣式產生衝突。
 3. 🛡️ **表單防呆機制**
    - 內建表單防呆機制與兩次密碼輸入一致性驗證。
+
+## 2026.10.27 更新日誌：模組中介站與命名整理
+
+新增支援 GET／POST 的模組中介站、三個區塊鏈示範模組與可操作頁面，統一檔案命名並移除未使用的舊服務。
+
+- [本日完整修改紀錄](docs/changes-2026-10-27.md)
+- [中介站使用方式](docs/api-gateway.md)
+- [檔案命名規則](docs/file-naming.md)

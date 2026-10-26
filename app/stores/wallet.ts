@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-// import { blockchainService, type TransferPayload, type TransferResult } from "~/services/blockchainService";
 
 export interface Company {
   id: string;
@@ -116,18 +115,5 @@ export const useWalletStore = defineStore('wallet', {
       this.walletAddress = '';
       this.balance = 0;
     },
-    
-    // // 呼叫 Service 執行轉帳
-    // async sendTransaction(receiver: string, amount: number): Promise<TransferResult> {
-    //   const payload: TransferPayload = {
-    //     sender: this.walletAddress,
-    //     receiver: receiver,
-    //     amount: amount,
-    //     network: 'CORE_V3' // 可選的擴充欄位
-    //   };
-      
-    //   // 這裡直接調用剛寫好的 Service 封裝
-    //   return await blockchainService.executeTransfer(payload);
-    // }
   }
 })
